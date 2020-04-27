@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title id="title"></title>
+  <% if (process.env.NODE_ENV === 'production') { %>
+  <!-- 生产环境 -->
+  <link rel="shortcut icon" type="image/x-icon" href="./static/img/ico.jpg">
+  <script>
+    document.write('<script src="./config/index.js?t=' + new Date().getTime() + '"><\/script>');
+
+  </script>
+  <% }else { %>
+  <!-- 开发环境 -->
+  <link rel="shortcut icon" type="image/x-icon" href="./static/img/ico.jpg">
+  <script src="./static/config/index.js"></script>
+  <script src="./static/plugins/echarts-3.8.5/echarts.common.min.js"></script>
+  <% } %>
+</head>
+
+<body>
+  <div id="app"></div>
+</body>
+<script>
+  // console.log = function () {}
+  window.onload = function () {
+    var i = document.getElementById('title')
+    i.innerText = window.SITE_CONFIG['orgName']
+  }
+
+</script>
+
+</html>
